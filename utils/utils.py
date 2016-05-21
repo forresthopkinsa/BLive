@@ -25,9 +25,10 @@ def import_path():
     paths = bpy.utils.script_paths()
     for i in paths:
         path = os.path.join(i, "addons")
-        for j in bpy.path.module_names(path, True):
-            if bpy.context.user_preferences.addons['BLive-master'].module in j[0]:
-                return os.path.dirname(j[1])
+        if os.path.isdir(path):
+            for j in bpy.path.module_names(path, True):
+                if bpy.context.user_preferences.addons['BLive-master'].module in j[0]:
+                    return os.path.dirname(j[1])
 
 def unique_name(collection, name):
     '''

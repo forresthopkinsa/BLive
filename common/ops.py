@@ -90,7 +90,7 @@ class BLive_OT_start_gameengine(bpy.types.Operator):
             bpy.ops.logic.sensor_add(type='ALWAYS', name='s.update')
         sc.camera.game.sensors['s.update'].use_pulse_true_level = True
         sc.camera.game.sensors['s.update'].use_pulse_false_level = False
-        sc.camera.game.sensors['s.update'].frequency = 0
+        sc.camera.game.sensors['s.update'].tick_skip = 0
 
         if not 'c.init' in sc.camera.game.controllers:
             bpy.ops.logic.controller_add(type='PYTHON', name='c.init')
